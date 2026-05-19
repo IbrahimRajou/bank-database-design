@@ -1,5 +1,5 @@
 CREATE TABLE Client(
-    SSN VARCHAR2(10) PRIMARY KEY,
+    SSN VARCHAR2(9) PRIMARY KEY,
     Fname VARCHAR2(20) NOT NULL,
     Mname VARCHAR2(20) NOT NULL,
     Lname VARCHAR2(20) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE Client(
 
 CREATE TABLE Account(
     Account_NO VARCHAR2(16) PRIMARY KEY,
-    Client_SSN VARCHAR2(10) NOT NULL REFERENCES Client (SSN) ON DELETE CASCADE,
+    Client_SSN VARCHAR2(9) NOT NULL REFERENCES Client (SSN) ON DELETE CASCADE,
     Account_Status VARCHAR2(8) CHECK (Account_Status IN ('Active', 'Inactive')) NOT NULL,
     Created_Date DATE NOT NULL,
     Account_Type VARCHAR2(10) CHECK (Account_Type IN ('Savings', 'Current', 'Business')) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE Account(
 
 CREATE TABLE Card(
     Card_NO VARCHAR2(16) PRIMARY KEY,
-    Client_SSN VARCHAR2(10) NOT NULL REFERENCES Client (SSN) ON DELETE CASCADE,
+    Client_ VARCHAR2(9) NOT NULL REFERENCES Client () ON DELETE CASCADE,
     Card_Type VARCHAR2(7) CHECK (Card_Type IN ('Debit', 'Credit', 'Prepaid')) NOT NULL,
     PIN NUMBER(4) CHECK (PIN BETWEEN 1000 AND 9999) NOT NULL,
     CVC NUMBER(3) CHECK (CVC BETWEEN 100 AND 999) NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE Card(
 
 CREATE TABLE loan(
     Loan_NO INTEGER PRIMARY KEY, 
-    Client_SSN VARCHAR2(10) NOT NULL REFERENCES Client (SSN) ON DELETE CASCADE,
+    Client_ VARCHAR2(9) NOT NULL REFERENCES Client () ON DELETE CASCADE,
     Start_Date DATE NOT NULL,
     Repayment_term_Month INTEGER CHECK (Repayment_term_Month > 0) NOT NULL,
     Due_Date DATE NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE Employee(
     Fname VARCHAR2(20) NOT NULL,
     Mname VARCHAR2(20) NOT NULL,
     Lname VARCHAR2(20) NOT NULL,
-    SSN VARCHAR2(10) NOT NULL UNIQUE,
+     VARCHAR2(9) NOT NULL UNIQUE,
     Address VARCHAR2(100), 
     Phone VARCHAR2(15) NOT NULL,
     Nationality VARCHAR2(30),
@@ -97,7 +97,7 @@ CREATE TABLE  Branch_Offers_Transactions(
 );
 
 CREATE TABLE  Client_Makes_Transactions(
-    Client_SSN VARCHAR2(10) REFERENCES Client (SSN) NOT NULL,
+    Client_SSN VARCHAR2(9) REFERENCES Client (SSN) NOT NULL,
     Transaction_NO VARCHAR2(12) REFERENCES Transaction (Transaction_NO) NOT NULL,
     PRIMARY KEY (Client_SSN, Transaction_NO)
 );
