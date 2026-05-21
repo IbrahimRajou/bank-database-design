@@ -71,5 +71,7 @@ The SQL script includes:
 The full SQL script is available in [BankDB.sql](BankDB.sql).
 
 ## Authors 
+- [Aroub Alzoubi](https://github.com/aroub-alzoubi)
 - [Ibrahim Rajou](https://github.com/IbrahimRajou)
 - [Mahmoud Youssuf](https://github.com/MahmoudYoussuf)
+
